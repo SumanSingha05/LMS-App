@@ -31,6 +31,11 @@ const Login = () => {
     } else {
       setLoginInput({...loginInput,[name]:value});
     }
+  };
+
+  const handleRegistration = (type) => {
+    const inputData = type === "signup" ? signupInput : loginInput;
+    console.log(inputData);
   }
   
   return (
@@ -83,7 +88,7 @@ const Login = () => {
             </div>
             </CardContent>
             <CardFooter>
-              <Button>Signup</Button>
+              <Button onClick={() => handleRegistration("signup")}>Signup</Button>
             </CardFooter>
           </Card>
         </TabsContent>
@@ -120,7 +125,7 @@ const Login = () => {
               </div>
             </CardContent>
             <CardFooter>
-              <Button>Login</Button>
+              <Button onClick={() => handleRegistration("login")}>Login</Button>
             </CardFooter>
           </Card>
         </TabsContent>
