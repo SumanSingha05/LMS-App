@@ -20,52 +20,57 @@ const Login = () =>  {
   return (
     <Tabs defaultValue="account" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="account">Account</TabsTrigger>
-        <TabsTrigger value="password">Password</TabsTrigger>
+        <TabsTrigger value="singup">Singup</TabsTrigger>
+        <TabsTrigger value="login">Login</TabsTrigger>
       </TabsList>
-      <TabsContent value="account">
+      <TabsContent value="singup">
         <Card>
           <CardHeader>
-            <CardTitle>Account</CardTitle>
+            <CardTitle>Singup</CardTitle>
             <CardDescription>
-              Make changes to your account here. Click save when you're done.
+              Create a new account and click singup when you're done.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
             <div className="space-y-1">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" defaultValue="Pedro Duarte" />
+              <Input type="text" placeholder="Eg. Suman" required="true" />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" defaultValue="@peduarte" />
+              <Label htmlFor="username">Email</Label>
+              <Input type="email" placeholder="Eg. suman@gmail.com" required="true"/>
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="username">Password</Label>
+              <Input type="password" placeholder="Eg. xyz" required="true"/>
             </div>
           </CardContent>
           <CardFooter>
-            <Button>Save changes</Button>
+            <Button>Singup</Button>
           </CardFooter>
         </Card>
       </TabsContent>
-      <TabsContent value="password">
+      <TabsContent value="login">
         <Card>
           <CardHeader>
-            <CardTitle>Password</CardTitle>
+            <CardTitle>Login</CardTitle>
             <CardDescription>
-              Change your password here. After saving, you'll be logged out.
+              Login your password here. After singup, you'll be logged in.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-2">
             <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
+              <Label htmlFor="current">Email</Label>
+              <Input type="email" placeholder="Eg. suman@gmail.com" required="true"/>
+
             </div>
             <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
-              <Input id="new" type="password" />
+              <Label htmlFor="new">Password</Label>
+              <Input type="password" placeholder="Eg. xyz" required="true"/>
             </div>
           </CardContent>
           <CardFooter>
-            <Button>Save password</Button>
+            <Button>Login</Button>
           </CardFooter>
         </Card>
       </TabsContent>
