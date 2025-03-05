@@ -15,66 +15,118 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs"
+import { useState } from "react"
 
-const Login = () =>  {
+const Login = () => {
+  const [signupInput, setSignupInput] = useState({ 
+    name: "", 
+    email: "", 
+    password: "" });
+  const [loginInput, setLoginInput] = useState({ email: "", password: "" });
+  
+  const changeInputHandler = (e, type) => {
+    const {name, value} = e.target;
+    if(type === "signup"){
+      setSignupInput({...signupInput, [name]:value});
+    } else {
+      setLoginInput({...loginInput,[name]:value});
+    }
+  }
+  
   return (
-    <Tabs defaultValue="account" className="w-[400px]">
-      <TabsList className="grid w-full grid-cols-2">
-        <TabsTrigger value="singup">Singup</TabsTrigger>
-        <TabsTrigger value="login">Login</TabsTrigger>
-      </TabsList>
-      <TabsContent value="singup">
-        <Card>
-          <CardHeader>
-            <CardTitle>Singup</CardTitle>
-            <CardDescription>
-              Create a new account and click singup when you're done.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="name">Name</Label>
-              <Input type="text" placeholder="Eg. Suman" required="true" />
+    <div className="flex items-center w-full justify-center">
+      <Tabs defaultValue="account" className="w-[400px]">
+        <TabsList className="grid w-full grid-cols-2">
+          <TabsTrigger value="signup">Signup</TabsTrigger>
+          <TabsTrigger value="login">Login</TabsTrigger>
+        </TabsList>
+        <TabsContent value="signup">
+          <Card>
+            <CardHeader>
+              <CardTitle>Signup</CardTitle>
+              <CardDescription>
+                Create a new account and click signup when you're done.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <div className="space-y-1">
+                <Label htmlFor="name">Name</Label>
+                <Input 
+                 type="text" 
+                 name="name"
+                 value={signupInput.name}
+                 onChange={(e) => changeInputHandler(e, "signup")}
+                 placeholder="Eg. Suman"
+                 required="true"
+                />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="username">Email</Label>
+                <Input 
+                  type="email" 
+                  name="email"
+                  value={signupInput.email}
+                  onChange={(e) => changeInputHandler(e, "signup")}                  placeholder="Eg. suman@gmail.com"
+                  required="true"
+                  />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="username">Password</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  value={signupInput.password}
+                  onChange={(e) => changeInputHandler(e, "signup")}
+                  placeholder="Eg. xyz"
+                  required="true"
+                  />
             </div>
-            <div className="space-y-1">
-              <Label htmlFor="username">Email</Label>
-              <Input type="email" placeholder="Eg. suman@gmail.com" required="true"/>
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="username">Password</Label>
-              <Input type="password" placeholder="Eg. xyz" required="true"/>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Singup</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="login">
-        <Card>
-          <CardHeader>
-            <CardTitle>Login</CardTitle>
-            <CardDescription>
-              Login your password here. After singup, you'll be logged in.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Email</Label>
-              <Input type="email" placeholder="Eg. suman@gmail.com" required="true"/>
+            </CardContent>
+            <CardFooter>
+              <Button>Signup</Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
+        <TabsContent value="login">
+          <Card>
+            <CardHeader>
+              <CardTitle>Login</CardTitle>
+              <CardDescription>
+                Login your password here. After signup, you'll be logged in.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <div className="space-y-1">
+                <Label htmlFor="current">Email</Label>
+                <Input 
+                type="email" 
+                name="email"
+                value={loginInput.email}
+                onChange={(e) => changeInputHandler(e, "login")}               
+                placeholder="Eg. suman@gmail.com" 
+                required="true" 
+                />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="new">Password</Label>
+                <Input 
+                type="password" 
+                name="password"
+                value={loginInput.password}
+                onChange={(e) => changeInputHandler(e, "login")}
+                placeholder="Eg. xyz" 
+                required="true" 
+                />
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button>Login</Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
+      </Tabs>
+    </div>
 
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">Password</Label>
-              <Input type="password" placeholder="Eg. xyz" required="true"/>
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Login</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-    </Tabs>
   )
 }
 
