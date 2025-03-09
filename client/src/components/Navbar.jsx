@@ -1,4 +1,4 @@
-import { School } from 'lucide-react'
+import { Icon, Menu, School } from 'lucide-react'
 import React from 'react'
 import { Button } from './ui/button';
 import { 
@@ -76,7 +76,11 @@ const Navbar = () => {
                 </div>
             </div>
             {/* Mobile Device */}
-          <MobileNavbar/>
+            <div className='flex md:hidden items-center justify-between px-4 h-full'>
+            <h1 className='font-extrabold text-2xl'>E-learning</h1>
+              <MobileNavbar/>
+            </div>
+
         </div>
     );
 };
@@ -88,7 +92,9 @@ const MobileNavbar = () => {
     return (
         <Sheet>
       <SheetTrigger asChild>
-        <Button variant="outline">Open</Button>
+        <Button size='icon' className="rounded-full bg-gray-300 hover:bg-gray-200" variant="outline">
+          <Menu/>
+        </Button>
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
