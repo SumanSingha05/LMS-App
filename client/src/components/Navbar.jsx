@@ -23,6 +23,7 @@ import {
  } from './ui/sheet';
 import { Label } from './ui/label';
 import { Input } from './ui/input';
+import { Separator } from '@radix-ui/react-dropdown-menu';
 
 const Navbar = () => {
     const user = true;
@@ -96,27 +97,18 @@ const MobileNavbar = () => {
           <Menu/>
         </Button>
       </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>Edit profile</SheetTitle>
-          <SheetDescription>
-            Make changes to your profile here. Click save when you're done.
-          </SheetDescription>
+      <SheetContent className="flex flex-col">
+        <SheetHeader className="flex flex-row items-center justify-between mt-2">
+          <SheetTitle>E-Learning</SheetTitle>
+          <DarkMode/>
         </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="name" className="text-right">
-              Name
-            </Label>
-            <Input id="name" value="Pedro Duarte" className="col-span-3" />
-          </div>
-          <div className="grid grid-cols-4 items-center gap-4">
-            <Label htmlFor="username" className="text-right">
-              Username
-            </Label>
-            <Input id="username" value="@peduarte" className="col-span-3" />
-          </div>
-        </div>
+        <Separator className='mr-2'/>
+        <nav className='flex flex-col space-y-4'>
+        <span>My Learning</span>
+        <span>Edit Profile</span>
+        <span>Logout</span>
+        </nav>
+        
         <SheetFooter>
           <SheetClose asChild>
             <Button type="submit">Save changes</Button>
